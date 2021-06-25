@@ -131,13 +131,13 @@ if __name__ == '__main__':
                     gt = bgr2ycbcr(gt, only_y=True)
 
                     output = output[scale:-scale, scale:-scale]
-                    gt = gt[scale:-scale, scale:-scale]
+                    #gt = gt[scale:-scale, scale:-scale]
 
-                    psnr = calculate_psnr(output * 255, gt * 255)
-                    ssim = calculate_ssim(output * 255, gt * 255)
+                    #psnr = calculate_psnr(output * 255, gt * 255)
+                    #ssim = calculate_ssim(output * 255, gt * 255)
 
-                    psnr_l.append(psnr)
-                    ssim_l.append(ssim)
+                    #psnr_l.append(psnr)
+                    #ssim_l.append(ssim)
 
     elif args.sr_type == 'VSR':
         num_img = len(ipath_l)
@@ -206,11 +206,11 @@ if __name__ == '__main__':
         print('Illenal SR type: not implemented!')
         sys.exit(1)
 
-    if args.gt_path:
-        avg_psnr = sum(psnr_l) / len(psnr_l)
-        avg_ssim = sum(ssim_l) / len(ssim_l)
-        print('--------- Result ---------')
-        print('PSNR: %.2f, SSIM:%.4f' % (avg_psnr, avg_ssim))
+    # if args.gt_path:
+    #     avg_psnr = sum(psnr_l) / len(psnr_l)
+    #     avg_ssim = sum(ssim_l) / len(ssim_l)
+    #     print('--------- Result ---------')
+    #     print('PSNR: %.2f, SSIM:%.4f' % (avg_psnr, avg_ssim))
 
     print('Finished!')
 
