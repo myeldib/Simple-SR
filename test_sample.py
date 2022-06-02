@@ -44,6 +44,9 @@ def get_network(model_path):
     elif 'LAPAR_C_x4' in model_path:
         from exps.LAPAR_C_x4.config import config
         from exps.LAPAR_C_x4.network import Network
+    elif 'BebyGAN_x4' in model_path:
+        from exps.BebyGAN.config import config
+        from exps.BebyGAN.network import Network
     else:
         print('Illenal model: not implemented!')
         sys.exit(1)
@@ -51,6 +54,9 @@ def get_network(model_path):
     # an ugly operation
     if 'KERNEL_PATH' in config.MODEL:
         config.MODEL.KERNEL_PATH = config.MODEL.KERNEL_PATH.replace('../', '')
+
+    if 'BebyGAN' in model_path:
+        return config, Network(config).G
 
     return config, Network(config)
 
